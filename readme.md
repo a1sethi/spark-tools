@@ -1,0 +1,1 @@
+spark-submit --class "CopyDynamo" --master local[4] --jars  /usr/share/aws/emr/ddb/lib/emr-ddb-hadoop.jar --executor-memory 10G --driver-memory 10G --executor-cores 4 --num-executors 4   target/scala-2.12/copydynamo_2.12-1.0.jar
