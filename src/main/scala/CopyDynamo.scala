@@ -22,6 +22,8 @@ object CopyDynamo {
     jobConf2.set("mapred.input.format.class", "org.apache.hadoop.dynamodb.read.DynamoDBInputFormat")
     jobConf2.set("mapred.output.format.class", "org.apache.hadoop.dynamodb.write.DynamoDBOutputFormat")
     var contacts = sc.hadoopRDD(jobConf, classOf[DynamoDBInputFormat], classOf[Text], classOf[DynamoDBItemWritable])
+    // Add Filter/Maps here to filter/transform data before saving.
+    // contacts.map(x => ???) or contacts.filter(x => ???) 
     contacts.saveAsHadoopDataset(jobConf2)
     spark.stop()
   }
